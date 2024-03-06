@@ -1,6 +1,9 @@
 module "ami" {
   source = "./ami"
 }
+module "key_pair" {
+  source = "./key_pair"
+}
 module "instance" {
   source           = "./instance"
   instance_type    = var.instance_type
@@ -8,6 +11,7 @@ module "instance" {
   public_subnet_id = module.network.public_subnet_id
   user_data        = file("./user-data/user-data.sh")
   sg_instance      = module.securityGroup.sg_instance
+  aws_auth         = module.key_pair.aws_auth
 }
 module "loadnBalancer" {
   source            = "./loadBalancer"

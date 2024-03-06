@@ -2,7 +2,7 @@
 resource "aws_lb_target_group" "main_tg" {
   name     = "main-tg"
   port     = 80
-  protocol = "http"
+  protocol = "HTTP"
   vpc_id   = var.vpc_id
   tags = {
     Name = "main_tg"

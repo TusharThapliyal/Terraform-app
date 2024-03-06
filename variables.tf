@@ -16,6 +16,3 @@ variable "aws_credentials" {
 variable "region" {
 
 }
-variable "public_key" {
-
-}

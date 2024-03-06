@@ -1,6 +1,5 @@
 #used in instance
 instance_type = "t2.micro"
-public_key    = file("~/.ssh/jenkins-demo.pub")
 #used in network
 cidr_vpc     = "10.0.0.0/16"
 cidr_subnets = ["10.0.1.0/24", "10.0.2.0/24"]

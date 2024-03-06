@@ -23,7 +23,7 @@ resource "aws_security_group" "sg_alb" {
 }
 #sg for instance
 resource "aws_security_group" "sg_instance" {
-  name        = "sg_alb"
+  name        = "sg_instance"
   description = "allows all traffic"
   vpc_id      = var.vpc_id
   tags = {
