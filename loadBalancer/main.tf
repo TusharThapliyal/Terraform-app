@@ -1,6 +1,6 @@
 #tg
 resource "aws_lb_target_group" "main_tg" {
-  name     = "main_tg"
+  name     = "main-tg"
   port     = 80
   protocol = "http"
   vpc_id   = var.vpc_id
@@ -16,7 +16,7 @@ resource "aws_lb_target_group_attachment" "main_tg_attach" {
 }
 #alb
 resource "aws_lb" "main_alb" {
-  name               = "main_alb"
+  name               = "main-alb"
   internal           = false
   load_balancer_type = "application"
   security_groups    = [var.sg_alb]
@@ -33,7 +33,8 @@ resource "aws_lb_listener" "main_alb_listner" {
   protocol          = "HTTP"
 
   default_action {
-    type = "forward"
+    type             = "forward"
+    target_group_arn = aws_lb_target_group.main_tg.arn
   }
 
   tags = {

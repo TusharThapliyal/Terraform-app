@@ -1,9 +1,6 @@
 variable "instance_type" {
 
 }
-variable "ami_id" {
-
-}
 variable "cidr_vpc" {
 
 }
@@ -17,5 +14,8 @@ variable "aws_credentials" {
 
 }
 variable "region" {
+
+}
+variable "public_key" {
 
 }

@@ -9,7 +9,7 @@ resource "aws_vpc" "main_vpc" {
 resource "aws_subnet" "public_subnet" {
   vpc_id            = aws_vpc.main_vpc.id
   cidr_block        = var.cidr_subnets[0]
-  availability_zone = element(var.az, index(0))
+  availability_zone = element(var.az, 0)
   tags = {
     Name = "public_subet"
   }
@@ -19,7 +19,7 @@ resource "aws_subnet" "public_subnet" {
 resource "aws_subnet" "private_subnet" {
   vpc_id            = aws_vpc.main_vpc.id
   cidr_block        = var.cidr_subnets[1]
-  availability_zone = element(var.az, index(1))
+  availability_zone = element(var.az, 1)
   tags = {
     Name = "private_subet"
   }

@@ -6,6 +6,8 @@ module "instance" {
   instance_type    = var.instance_type
   ami_id           = module.ami.ami_id
   public_subnet_id = module.network.public_subnet_id
+  user_data        = file("./user-data/user-data.sh")
+  sg_instance      = module.securityGroup.sg_instance
 }
 module "loadnBalancer" {
   source            = "./loadBalancer"
