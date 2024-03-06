@@ -10,3 +10,9 @@ module "loadnBalancer" {
   source = "./loadBalancer"
 
 }
+module "network" {
+  source       = "./network"
+  cidr_vpc     = var.cidr_vpc
+  cidr_subnets = var.cidr_subnets
+  az           = var.az
+}
