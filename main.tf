@@ -28,6 +28,11 @@ module "network" {
   az           = var.az
 }
 module "securityGroup" {
-  source = "./securityGroup"
-  vpc_id = module.network.vpc_id
+  source             = "./securityGroup"
+  vpc_id             = module.network.vpc_id
+  public_subnet_cidr = module.network.public_subnet_cidr
+}
+module "rds" {
+  source            = "./rds"
+  private_subnet_id = module.network.private_subnet_id
 }

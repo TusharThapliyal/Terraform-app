@@ -64,3 +64,15 @@ resource "aws_security_group" "sg_instance" {
     cidr_blocks = ["0.0.0.0/0"]
   }
 }
+resource "aws_security_group" "sg_rds" {
+  name        = "sg_rds"
+  description = "allow traffic from instance"
+  vpc_id      = var.vpc_id
+
+  ingress {
+    from_port   = 3306
+    to_port     = 3306
+    protocol    = "tcp"
+    cidr_blocks = [var.public_subnet_cidr]
+  }
+}

@@ -20,7 +20,7 @@ resource "aws_lb" "main_alb" {
   internal           = false
   load_balancer_type = "application"
   security_groups    = [var.sg_alb]
-  subnets            = [var.public_subnet_id, var.private_subnet_id]
+  subnets            = [var.public_subnet_id, var.private_subnet_id[0]]
 
   tags = {
     Name = "main_alb"
