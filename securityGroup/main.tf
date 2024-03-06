@@ -14,13 +14,13 @@ resource "aws_security_group" "sg_alb" {
     protocol    = "tcp"
     cidr_blocks = ["0.0.0.0/0"]
   }
-  ingress {
-    description = "http from internet"
-    from_port   = 443
-    to_port     = 443
-    protocol    = "tcp"
-    cidr_blocks = ["0.0.0.0/0"]
-  }
+  # ingress {
+  #   description = "http from internet"
+  #   from_port   = 443
+  #   to_port     = 443
+  #   protocol    = "tcp"
+  #   cidr_blocks = ["0.0.0.0/0"]
+  # }
   egress {
     from_port   = 0
     to_port     = 0
@@ -31,17 +31,17 @@ resource "aws_security_group" "sg_alb" {
 #sg for instance
 resource "aws_security_group" "sg_instance" {
   name        = "sg_instance"
-  description = "allows all traffic"
+  description = "allows all traffic from alb on port 5000."
   vpc_id      = var.vpc_id
   tags = {
     Name = "sg_instance"
   }
   ingress {
-    description     = "http from 5000 only from alb"
-    from_port       = 80
-    to_port         = 80
-    protocol        = "tcp"
-    security_groups = ["${aws_security_group.sg_alb.id}"]
+    from_port = 5000
+    to_port   = 5000
+    protocol  = "tcp"
+    # security_groups = ["${aws_security_group.sg_alb.id}"]
+    cidr_blocks = ["0.0.0.0/0"]
   }
   ingress {
     description = "allow ssh"
@@ -52,8 +52,8 @@ resource "aws_security_group" "sg_instance" {
   }
   ingress {
     description     = "allow port 5000 from alb"
-    from_port       = 22
-    to_port         = 22
+    from_port       = 5000
+    to_port         = 5000
     protocol        = "tcp"
     security_groups = ["${aws_security_group.sg_alb.id}"]
   }
