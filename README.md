@@ -1,6 +1,10 @@
 # Terraform-app
 
-this repo contains the IaC for deploying python flask api on AWS ec2 instance connected to AWS RDS on.
+this repo contains the IaC for deploying python flask api on AWS ec2 instance connected to AWS RDS on.It is a part of DevOps projects with two additional repositories: [Terraform-jenkins](https://github.com/TusharThapliyal/Terraform-jenkins.git) and [python-api](https://github.com/TusharThapliyal/python-api.git)
+
+## Architectural Diagram
+<img width="1379" alt="Screenshot 2024-03-09 at 4 41 21 PM" src="https://github.com/TusharThapliyal/Terraform-jenkins/assets/75366942/1ba37f53-ad51-42ce-a469-c6fad62cc2dc">
+
 
 ## Steps to follow
 
